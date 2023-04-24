@@ -10,16 +10,15 @@ Earthquake Alert Prediction :volcano:
 ---
 ## 📍 Table of Contents
 - [📍 Table of Contents](#-table-of-contents)
-- [👋 Introdcution](#-introdcution)
-- [⚙️ Project Structure](#️-project-structure)
+- [👋 Introduction](#-introduction)
 - [🏎💨 Getting Started](#-getting-started)
   - [✅ Prerequisites](#-prerequisites)
-  - [💻 Usage](#-installation)
+  - [💻 Usage](#-usage)
 - [📫 Contact](#-contact)
 
 ---
 
-## 👋 Introdcution
+## 👋 Introduction
 
 This project is aimed at predicting earthquake alerts, given a few independent variables such as depth, significance, comunity decimal intensities (CDI) and others.
 
