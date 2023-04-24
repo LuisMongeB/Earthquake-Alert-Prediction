@@ -21,11 +21,11 @@ Earthquake Alert Prediction :volcano:
 
 ## 👋 Introdcution
 
-This project is aimed at predicting earthquake alerts, given a few variables as independent variables like depth, significance, comunity decimal intensities (CDI) and others. The dataset source is: https://www.kaggle.com/datasets/warcoder/earthquake-dataset
+This project is aimed at predicting earthquake alerts, given a few independent variables such as depth, significance, comunity decimal intensities (CDI) and others.
+
+The dataset source is: https://www.kaggle.com/datasets/warcoder/earthquake-dataset
 
 ---
-
-<img src="https://raw.githubusercontent.com/PKief/vscode-material-icon-theme/ec559a9f6bfd399b82bb44393651661b08aaf7ba/icons/folder-src-open.svg" width="80" />
 
 ## 🏎💨 Getting Started
 
@@ -63,6 +63,6 @@ python train.py
 
 ## 📫 Contact
 
-If you have any questions or concerns, feel free to contact me through LinkedIn `[https://www.linkedin.com/in/luis-diego-monge-bolanos/]`
+If you have any questions or concerns, feel free to contact me through [LinkedIn](https://www.linkedin.com/in/luis-diego-monge-bolanos/).
 
 ---
