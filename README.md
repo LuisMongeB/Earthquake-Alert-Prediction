@@ -31,8 +31,7 @@ The dataset source is: https://www.kaggle.com/datasets/warcoder/earthquake-datas
 ### ✅ Prerequisites
 
 Before you begin, ensure that you have the following prerequisites installed:
-> python 3.11.0
-> anaconda package manager
+> python version 3.11.0
 
 ### 💻 Installation
 
@@ -46,7 +45,12 @@ git clone https://github.com/LuisMongeB/earthquake-alert-prediction
 cd earthquake-alert-prediction
 ```
 
-3. Install the dependencies:
+3. Create and activate conda environment:
+```sh
+conda create -n earthquakes python=3.11.0 && conda activate earthquakes
+```
+
+4. Install the dependencies:
 ```sh
 pip install -r requirements.txt
 ```
