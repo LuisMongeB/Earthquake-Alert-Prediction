@@ -30,7 +30,7 @@ def remove_missing(df):
     """
     Remove missing values from a pandas dataframe.
     """
-    df = df.dropna()
+    df = df.dropna(subset='alert')
     return df
 
 def remove_features(df, features):
@@ -40,6 +40,7 @@ def remove_features(df, features):
     df = df.drop(features, axis=1)
     return df
 
+
 def prepare_data(df_path: PosixPath, features_to_remove: List[str]):
     """
     Prepare data for training.
@@ -47,12 +48,18 @@ def prepare_data(df_path: PosixPath, features_to_remove: List[str]):
     2. Reduce memory usage
     3. Remove missing values
     4. Remove features
+    5. Reorder columns
     """
+    col_order = ['magnitude', 'cdi', 'mmi', 'tsunami', 'sig', 'nst', 'dmin', 'gap', 'depth', 'alert']
+    
     df = read_data(df_path)
     df = reduce_memory_usage(df)
     df = remove_missing(df)
     df = remove_features(df, features_to_remove)
+    df = df[col_order]
+    
     return df
+
 
 # quakes_path = Path.cwd() / 'data' / 'earthquake-2001-2023.csv'
 # earthquakes = read_data(quakes_path)
