@@ -2,7 +2,7 @@
 <div align="center">
 <h1 align="center">
 <br>
-Earthquake Alert Prediction :volcano:
+:volcano: Earthquake Alert Prediction :volcano:
 </h1>
 </div>
 
