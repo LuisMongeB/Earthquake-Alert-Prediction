@@ -6,13 +6,11 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import f1_score
 import xgboost as xgb
-from sklearn.model_selection import RandomizedSearchCV, GridSearchCV
 from imblearn.over_sampling import SMOTE
 import mlflow.sklearn
 
 from preparation import prepare_data
 from train import preprocess, split_data
-from hyperparameter_tuning import rf_tuning, dt_tuning
 
 # Load data
 dataset_path = Path.cwd() / 'data' / 'earthquake-2001-2023.csv'
