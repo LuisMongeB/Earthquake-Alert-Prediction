@@ -2,15 +2,13 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, f1_score
 from sklearn.model_selection import train_test_split
-
 from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.model_selection import cross_val_score
+from sklearn.model_selection import RepeatedStratifiedKFold
 
-from preparation import prepare_data
+from imblearn.over_sampling import SMOTE
 
 
 def split_data(df, ratio=(0.7, 0.2, 0.1), random_state=42):
@@ -81,13 +79,10 @@ def preprocess(df):
     return preprocessed
 
 
-def train_and_predict(split, model):
+def train_and_predict(X_train, y_train, model):
     """
     Train a model on a split and return the predictions.
     """
-    # Split the data
-    X_train, y_train = split.drop('alert', axis=1), split['alert']
-
     # Fit the model
     model.fit(X_train, y_train)
 
@@ -96,30 +91,17 @@ def train_and_predict(split, model):
 
     return preds
 
+def eval_metrics(actual, pred):
+    accuracy = accuracy_score(actual, pred)
+    f1 = f1_score(actual, pred, average='weighted')
+    # roc_auc = roc_auc_score(actual, pred)
+    return accuracy, f1
 
-# Load the data
-if __name__ == '__main__':
 
-    earthquakes_path = Path.cwd() / 'data' / 'earthquake-2001-2023.csv'
-
-    features_to_remove = ['title', 'date_time', 'magType', 'latitude',
-                          'longitude', 'location', 'continent', 'country']
-
-    earthquakes = prepare_data(earthquakes_path, features_to_remove)
-
-    print(earthquakes.head())
-
-    # Preprocess data
-    preprocessed = preprocess(earthquakes)
-
-    # split the data: X_train = train_df
-    X_train, X_val, X_test, y_train, y_val, y_test = split_data(preprocessed)
-    
-    # Define a list of models
-    models = [LogisticRegression(), RandomForestClassifier(),
-              DecisionTreeClassifier()]
-
-# Loop through the models and print the accuracy
-# for model in models:
-#     preds = train_and_predict(train_df, model)
-#     print(f"{model.__class__.__name__} accuracy: {accuracy_score(train_df['alert'], preds)}")
+def cv_upsampled(model, X, y, upsample=True):
+    if upsample:
+        over = SMOTE()
+        X, y = over.fit_resample(X, y)
+    cv = RepeatedStratifiedKFold(n_splits=10, n_repeats=3, random_state=1)
+    scores = cross_val_score(model, X, y, scoring='accuracy', cv=cv, n_jobs=-1)
+    return scores
