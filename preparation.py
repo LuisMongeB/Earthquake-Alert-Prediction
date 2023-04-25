@@ -47,7 +47,7 @@ def prepare_data(df_path: PosixPath, features_to_remove: List[str]):
     1. Read data from csv file
     2. Reduce memory usage
     3. Remove missing values
-    4. Remove features
+    4. Remove features: typical features to remove are title, date_time, magType, location, continent, country
     5. Reorder columns
     """
     col_order = ['magnitude', 'cdi', 'mmi', 'tsunami', 'sig', 'nst', 'dmin', 'gap', 'depth', 'alert']
