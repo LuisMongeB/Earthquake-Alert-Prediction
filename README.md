@@ -58,7 +58,7 @@ pip install -r requirements.txt
 ### Usage
 
 ```sh
-python train.py
+python main.py
 ```
 
 <hr />
