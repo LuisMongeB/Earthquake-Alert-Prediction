@@ -24,6 +24,9 @@ This project is aimed at predicting earthquake alerts, given a few independent v
 
 The dataset source is: https://www.kaggle.com/datasets/warcoder/earthquake-dataset
 
+Main challenge was to address class imbalance, which was tackled with by synthetically upsampling the minority class (SMOTE). 
+
+After hyperparameter tuning, the best model was the RandomForestClassifier with an F1 score of: 96.9%. 
 ---
 
 ## 🏎💨 Getting Started
